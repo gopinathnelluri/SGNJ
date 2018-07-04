@@ -1,0 +1,8 @@
+{
+  "name": "SikhGamesOfNJ",
+  "app_id": "0dd94f9e",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
