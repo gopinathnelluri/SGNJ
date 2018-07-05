@@ -1,14 +1,95 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      Sikh Games of NJ
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content>
+  <div padding>
+    <ion-segment [(ngModel)]="segment">
+      <ion-segment-button value="men">
+        <ion-icon name="man"></ion-icon> MALE
+      </ion-segment-button>
+      <ion-segment-button value="women">
+        <ion-icon name="woman"></ion-icon> FEMALE
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <div [ngSwitch]="segment">
+    <div *ngSwitchCase="'men'">
+      <div *ngIf="!maleSportsList">
+        <ion-card padding text-center>
+          <h2>Loading..!</h2>
+        </ion-card>
+      </div>
+      <div *ngIf="(maleSportsList && maleSportsList.length == 0)">
+        <ion-card padding text-center>
+          <h2>No sports listed!</h2>
+        </ion-card>
+      </div>
+      <ion-card *ngFor="let item of maleSportsList; let i = index">
+        <ion-item (click)="expandMaleSportsListOptions(i)">
+          <div class="icon-avatar-border-radius" item-start>
+            <img class="icon-image-bg" src="{{item.icon}}">
+          </div>
+          <h2>{{item.name}}</h2>
+          <div class="icon-avatar-border-radius" item-end>
+            <img class="icon-image-bg" src="{{customIcons['male']}}">
+          </div>
+        </ion-item>
+        <ion-card-content *ngIf="maleListOptionsDisplay[i]" margin-left>
+          <div margin-left>
+            <ion-list no-lines>
+              <div *ngFor="let categoryItem of categoriesList; let c = index">
+                <button ion-item (click)="navigateToSport($event,item,'male',c)">
+                  {{categoryItem.title}}
+                </button>
+              </div>
+            </ion-list>
+          </div>
+
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </div>
+  <div [ngSwitch]="segment">
+    <div *ngSwitchCase="'women'">
+      <div *ngIf="!femaleSportsList">
+        <ion-card padding text-center>
+          <h2>Loading..!</h2>
+        </ion-card>
+      </div>
+      <div *ngIf="(femaleSportsList && femaleSportsList.length == 0)">
+        <ion-card padding text-center>
+          <h2>No sports listed!</h2>
+        </ion-card>
+      </div>
+      <ion-card *ngFor="let item of femaleSportsList; let i = index">
+        <ion-item (click)="expandFemaleSportsListOptions(i)">
+          <div class="icon-avatar-border-radius" item-start>
+            <img class="icon-image-bg" src="{{item.icon}}">
+          </div>
+          <h2>{{item.name}}</h2>
+          <div class="icon-avatar-border-radius" item-end>
+            <img class="icon-image-bg" src="{{customIcons['female']}}">
+          </div>
+        </ion-item>
+        <ion-card-content *ngIf="femaleListOptionsDisplay[i]" margin-left>
+          <div margin-left>
+            <ion-list no-lines>
+              <div *ngFor="let categoryItem of categoriesList; let c = index">
+                <button ion-item (click)="navigateToSport($event,item,'female',c)">
+                  {{categoryItem.title}}
+                </button>
+              </div>
+            </ion-list>
+          </div>
+
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </div>
 </ion-content>

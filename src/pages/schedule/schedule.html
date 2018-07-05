@@ -1,0 +1,66 @@
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>{{sport.name}}</ion-title>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content class="card-background-page">
+  <!--
+  <div class="breadcrumb" *ngIf="showBreadCrumb">
+      {{gender=='male'?'Men':'Women'}} > {{sport.name}} > {{categoryDetails.title}}
+  </div>
+  -->
+    <div *ngIf="scheduleData">
+        <div>
+            <ion-card no-padding>
+                <ion-card-header color="primary" text-uppercase>
+                    Schedule
+                </ion-card-header>
+
+                <ion-list>
+                    <ion-item>
+                        <div text-center *ngIf="!scheduleData || (scheduleData && scheduleData.length == 0)">
+                            No games scheduled!
+                        </div>
+                        <ion-card (click)="details($event, scheduleItem.$key)" *ngFor="let scheduleItem of scheduleData;let i = index">
+                            <ion-list no-border>
+                                <ion-item>
+                                    <ion-grid *ngIf="scheduleItem.details" class="scheduleDetails">
+                                        <ion-row>
+                                            <ion-col no-padding text-left>
+                                                <ion-row>
+                                                    <ion-col>
+                                                        {{scheduleItem.details.level}}
+                                                    </ion-col>
+                                                </ion-row>
+                                                <ion-row>
+                                                    <ion-col>
+                                                        {{scheduleItem.details.status}}
+                                                    </ion-col>
+                                                </ion-row>
+                                            </ion-col>
+                                            <ion-col no-padding text-right>
+                                                <ion-row *ngIf="scheduleItem.details.date">
+                                                    <ion-col>
+                                                        {{scheduleItem.details.date | date:'MM/dd/yyyy'}}
+                                                    </ion-col>
+                                                </ion-row>
+                                                <ion-row>
+                                                    <ion-col>
+                                                        {{scheduleItem.details.time}}
+                                                    </ion-col>
+                                                </ion-row>
+                                            </ion-col>
+                                        </ion-row>
+                                    </ion-grid>
+                                </ion-item>
+                            </ion-list>
+                        </ion-card>
+                    </ion-item>
+                </ion-list>
+            </ion-card>
+        </div>
+    </div>
+</ion-content>

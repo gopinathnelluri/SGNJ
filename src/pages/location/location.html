@@ -1,0 +1,91 @@
+<!--
+  Generated template for the LocationPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Location</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-card class="adv-map">
+
+      <!--
+      <div style="position: relative">
+        <ion-fab right top>
+          <button ion-fab color="secondary">
+            <ion-icon name="pin"></ion-icon>
+          </button>
+        </ion-fab>
+      </div>
+      
+      <ion-item>
+        <ion-icon color="subtle" large item-start name='information-circle'></ion-icon>
+        <h2>Museum of Information</h2>
+        <p>44 Rue de Info, 75010 Paris, France</p>
+      </ion-item>
+      -->
+      <div *ngIf="apps">
+        <!--
+        <ion-item *ngIf="apps.google_maps" (click)="openInGoole()">
+          <div class="icon-avatar-border-radius" item-start>
+            <img class="icon-image-bg" src="{{customIcons.google_maps}}">
+          </div>
+          <h2>Google Maps</h2>
+        </ion-item>
+        -->
+        <button *ngIf="apps.google_maps" ion-item (click)="openInGoolge()">
+              <div class="icon-avatar-border-radius" item-start>
+                  <img class="icon-image-bg" src="{{customIcons.google_maps}}">
+              </div>
+              Google Maps
+        </button>
+        <button *ngIf="apps.waze" ion-item (click)="openInWaze()">
+              <div class="icon-avatar-border-radius" item-start>
+                  <img class="icon-image-bg" src="{{customIcons.waze}}">
+              </div>
+              Waze
+        </button>
+        <button *ngIf="apps.apple_maps" ion-item (click)="openInAppleMaps()">
+              <div class="icon-avatar-border-radius" item-start>
+                  <img class="icon-image-bg" src="{{customIcons.apple_maps}}">
+              </div>
+              Apple Maps
+        </button>
+        <button *ngIf="apps.uber" ion-item (click)="openInUber()">
+              <div class="icon-avatar-border-radius" item-start>
+                  <img class="icon-image-bg" src="{{customIcons.uber}}">
+              </div>
+              Uber
+        </button> 
+        <button *ngIf="apps.lyft" ion-item (click)="openInLyft()">
+              <div class="icon-avatar-border-radius" item-start>
+                  <img class="icon-image-bg" src="{{customIcons.lyft}}">
+              </div>
+              Lyft
+        </button> 
+      </div>
+      <button ion-item (click)="openInBrowser()">
+              <div class="icon-avatar-border-radius" item-start>
+                  <img class="icon-image-bg" src="{{customIcons.browser}}">
+              </div>
+              Browser
+      </button>
+      <!--
+      <ion-item actions>
+        <span ion-text item-start color="secondary" class="item-bold">26 min</span>
+        <span ion-text item-start color="subtle">(8.1 mi)</span>
+        <button ion-button color="secondary" clear item-end icon-start>
+          <ion-icon name='navigate'></ion-icon>
+          Start
+        </button>
+      </ion-item>
+      -->
+    </ion-card>
+</ion-content>

@@ -1,0 +1,163 @@
+<!--
+  Generated template for the ContactPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>Contacts</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content class="page" padding>
+
+  <div>
+    <ion-segment [(ngModel)]="segment">
+      <ion-segment-button value="male">
+        <ion-icon name="man"></ion-icon> MALE
+      </ion-segment-button>
+      <ion-segment-button value="female">
+        <ion-icon name="woman"></ion-icon> FEMALE
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <div [ngSwitch]="segment">
+    <div *ngSwitchCase="'male'">
+      <div *ngIf="!male">
+        <ion-card padding text-center>
+          <h2>Loading..!</h2>
+        </ion-card>
+      </div>
+      <div *ngIf="(male && male.length == 0)">
+        <ion-card padding text-center>
+          <h2>No contacts listed!</h2>
+        </ion-card>
+      </div>
+      <div *ngIf="(male && male.length > 0)">
+        <ion-card text-left *ngFor="let sport of male" class="adv-map">
+          <ion-card-header>
+            {{sport.gname}}
+          </ion-card-header>
+
+          <a href="tel:{{sport.mobile}}" *ngIf="sport.cname && sport.mobile">
+            <ion-item>
+              <ion-avatar large item-start>
+                <img src="{{customIcons.main}}">
+              </ion-avatar>
+              <h2>{{sport.cname}}</h2>
+              <p>{{sport.mobile}}</p>
+            </ion-item>
+          </a>
+
+          <a href="tel:{{sport.category.u10.mobile}}" *ngIf="sport.category && sport.category.u10">
+            <ion-item>
+              <ion-avatar large item-start>
+                <img src="{{customIcons.u10}}">
+              </ion-avatar>
+              <h2>{{sport.category.u10.name}}</h2>
+              <p>{{sport.category.u10.mobile}}</p>
+            </ion-item>
+          </a>
+          <a href="tel:{{sport.category.u14.mobile}}" *ngIf="sport.category && sport.category.u14">
+            <ion-item>
+              <ion-avatar large item-start>
+                <img src="{{customIcons.u14}}">
+              </ion-avatar>
+              <h2>{{sport.category.u14.name}}</h2>
+              <p>{{sport.category.u14.mobile}}</p>
+            </ion-item>
+          </a>
+          <a href="tel:{{sport.category.u18.mobile}}" *ngIf="sport.category && sport.category.u18">
+            <ion-item>
+              <ion-avatar large item-start>
+                <img src="{{customIcons.u18}}">
+              </ion-avatar>
+              <h2>{{sport.category.u18.name}}</h2>
+              <p>{{sport.category.u18.mobile}}</p>
+            </ion-item>
+          </a>
+          <a href="tel:{{sport.category.a18.mobile}}" *ngIf="sport.category && sport.category.a18">
+            <ion-item>
+              <ion-avatar large item-start>
+                <img src="{{customIcons.a18}}">
+              </ion-avatar>
+              <h2>{{sport.category.a18.name}}</h2>
+              <p>{{sport.category.a18.mobile}}</p>
+            </ion-item>
+          </a>
+        </ion-card>
+      </div>
+    </div>
+  </div>
+  <div [ngSwitch]="segment">
+    <div *ngSwitchCase="'female'">
+      <div *ngIf="!female">
+        <ion-card padding text-center>
+          <h2>Loading..!</h2>
+        </ion-card>
+      </div>
+      <div *ngIf="(female && female.length == 0)">
+        <ion-card padding text-center>
+          <h2>No contacts listed!</h2>
+        </ion-card>
+      </div>
+      <div *ngIf="(female && female.length > 0)">
+          <ion-card *ngFor="let sport of male" class="adv-map">
+            <ion-card-header>
+              {{sport.gname}}
+            </ion-card-header>
+  
+            <a href="tel:{{sport.mobile}}" *ngIf="sport.cname && sport.mobile">
+              <ion-item>
+                <ion-avatar large item-start>
+                  <img src="{{customIcons.main}}">
+                </ion-avatar>
+                <h2>{{sport.cname}}</h2>
+                <p>{{sport.mobile}}</p>
+              </ion-item>
+            </a>
+  
+            <a href="tel:{{sport.category.u10.mobile}}" *ngIf="sport.category && sport.category.u10">
+              <ion-item>
+                <ion-avatar large item-start>
+                  <img src="{{customIcons.u10}}">
+                </ion-avatar>
+                <h2>{{sport.category.u10.name}}</h2>
+                <p>{{sport.category.u10.mobile}}</p>
+              </ion-item>
+            </a>
+            <a href="tel:{{sport.category.u14.mobile}}" *ngIf="sport.category && sport.category.u14">
+              <ion-item>
+                <ion-avatar large item-start>
+                  <img src="{{customIcons.u14}}">
+                </ion-avatar>
+                <h2>{{sport.category.u14.name}}</h2>
+                <p>{{sport.category.u14.mobile}}</p>
+              </ion-item>
+            </a>
+            <a href="tel:{{sport.category.u18.mobile}}" *ngIf="sport.category && sport.category.u18">
+              <ion-item>
+                <ion-avatar large item-start>
+                  <img src="{{customIcons.u18}}">
+                </ion-avatar>
+                <h2>{{sport.category.u18.name}}</h2>
+                <p>{{sport.category.u18.mobile}}</p>
+              </ion-item>
+            </a>
+            <a href="tel:{{sport.category.a18.mobile}}" *ngIf="sport.category && sport.category.a18">
+              <ion-item>
+                <ion-avatar large item-start>
+                  <img src="{{customIcons.a18}}">
+                </ion-avatar>
+                <h2>{{sport.category.a18.name}}</h2>
+                <p>{{sport.category.a18.mobile}}</p>
+              </ion-item>
+            </a>
+          </ion-card>
+        </div>
+    </div>
+  </div>
+</ion-content>
