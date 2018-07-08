@@ -35,7 +35,6 @@ export class HomePage {
        this.maleSportsListObservable = this.firebaseService.get('male/list');
        
        this.maleSportsListObservable.subscribe((data)=>{
-         console.log(data);
           this.maleSportsList = data;
           this.maleListOptionsDisplay = [];
           this.maleSportsList.forEach((item) =>{

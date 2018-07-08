@@ -3,13 +3,6 @@ import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
 import { icons } from '../../providers/icons';
 import { FirebaseService } from "../../providers/firebase-service";
 
-/**
- * Generated class for the ContactPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-contacts',
@@ -27,7 +20,6 @@ export class ContactsPage {
     this.customIcons = icons;
     this.contactObservable = this.firebaseService.get('contacts');
     this.contactObservable.subscribe((data)=>{
-      console.log("constact",data);
       if(data != undefined && data.length >= 1){
         if(data.length == 1){
           if(data[0].$key == "male"){
@@ -60,12 +52,6 @@ export class ContactsPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ContactPage');
-  }
-
-  callThisNumber(number){
-    var url = "tel:"+number;
-    window.open(url);
-   
   }
 
 }

@@ -2,14 +2,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
 import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-navigator';
 import { icons } from '../../providers/icons';
-//import { InAppBrowser } from '@ionic-native/in-app-browser';
-
-/**
- * Generated class for the LocationPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -113,35 +105,8 @@ export class LocationPage {
   }
 
   openInBrowser(){
-    /*
-    var options : InAppBrowserOptions = {
-        location : 'yes',//Or 'no' 
-        hidden : 'no', //Or  'yes'
-        clearcache : 'yes',
-        clearsessioncache : 'yes',
-        zoom : 'yes',//Android only ,shows browser zoom controls 
-        hardwareback : 'yes',
-        mediaPlaybackRequiresUserAction : 'no',
-        shouldPauseOnSuspend : 'no', //Android only 
-        closebuttoncaption : 'Close', //iOS only
-        disallowoverscroll : 'no', //iOS only 
-        toolbar : 'yes', //iOS only 
-        enableViewportScale : 'no', //iOS only 
-        allowInlineMediaPlayback : 'no',//iOS only 
-        presentationstyle : 'pagesheet',//iOS only 
-        fullscreen : 'yes',//Windows only    
-    };
-    */
     var url = "https://www.google.com/maps/search/?api=1&query="+this.destination;
     window.open(url,'_system', 'location=yes');
-    
-    /*
-    const browser = this.iab.create(url);
-
-    browser.on("exit").subscribe(event => {
-      console.log("closed");
-    })
-    */
   }
 
 }

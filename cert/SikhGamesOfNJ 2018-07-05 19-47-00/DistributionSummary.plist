@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SikhGamesOfNJ.ipa</key>
+	<array>
+		<dict>
+			<key>architectures</key>
+			<array>
+				<string>armv7</string>
+				<string>arm64</string>
+			</array>
+			<key>certificate</key>
+			<dict>
+				<key>SHA1</key>
+				<string>E4B81DE165CF43594015B2FA299292B665765921</string>
+				<key>dateExpires</key>
+				<string>7/5/19</string>
+				<key>type</key>
+				<string>iOS Distribution</string>
+			</dict>
+			<key>entitlements</key>
+			<dict>
+				<key>application-identifier</key>
+				<string>E5K445D3M7.com.sikhgamesofnj.app</string>
+				<key>beta-reports-active</key>
+				<true/>
+				<key>com.apple.developer.team-identifier</key>
+				<string>E5K445D3M7</string>
+				<key>get-task-allow</key>
+				<false/>
+			</dict>
+			<key>name</key>
+			<string>SikhGamesOfNJ.app</string>
+			<key>profile</key>
+			<dict>
+				<key>UUID</key>
+				<string>fd3d79b1-d0bd-4afd-b341-eaf8b0457f32</string>
+				<key>name</key>
+				<string>iOS Team Store Provisioning Profile: com.sikhgamesofnj.app</string>
+			</dict>
+			<key>symbols</key>
+			<false/>
+			<key>team</key>
+			<dict>
+				<key>id</key>
+				<string>E5K445D3M7</string>
+				<key>name</key>
+				<string>Gopinath Nelluri</string>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -5,14 +5,6 @@ import { LocationPage } from "../location/location";
 import { categories } from '../../providers/categories';
 import { Calendar } from '@ionic-native/calendar';
 import { DetailsPage } from '../details/details';
-//import { map } from 'rxjs/operators';
-
-/**
- * Generated class for the SportPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -37,24 +29,10 @@ export class SchedulePage {
     this.category = navParams.get('category');
     this.gender = navParams.get('gender');
     this.categoryDetails = categories[this.category];
-    console.log(this.categoryDetails)
-
+    
     this.scheduleObject = this.firebaseService.get(this.gender+ '/sports/'+this.sport.path+"/"+this.category+"/schedule");
     
-    /*
-    this.firebaseService.get(this.gender+ '/sports/'+this.sport.path+"/"+this.category+"/schedule").snapshotChanges().pipe(
-      map(changes => 
-        changes.map(c => ({ key: c.payload.key, value: c.payload.val() }))
-      )
-    ).subscribe(data => {
-      this.scheduleData = data;
-      console.log(data);
-      this.calenderTitle = (this.gender=='male'?'Men':'Women')+"'s "+this.sport.name+" : " +this.categoryDetails.title;
-    });
-    */
-    
     this.scheduleObject.subscribe((data) => {
-      console.log("schedule:",data)
       if(data){
         this.scheduleData = data;
         this.calenderTitle = (this.gender=='male'?'Men':'Women')+"'s "+this.sport.name+" : " +this.categoryDetails.title;

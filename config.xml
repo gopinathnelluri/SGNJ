@@ -88,6 +88,7 @@
     <plugin name="cordova-plugin-calendar" spec="^5.1.2">
         <variable name="CALENDAR_USAGE_DESCRIPTION" value=" " />
     </plugin>
+    <plugin name="cordova-plugin-statusbar" spec="^2.4.2" />
     <engine name="android" spec="7.0.0" />
     <engine name="ios" spec="4.5.4" />
 </widget>

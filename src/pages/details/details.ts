@@ -6,12 +6,6 @@ import { LocationPage } from '../location/location';
 import { categories } from '../../providers/categories';
 import { Platform } from 'ionic-angular';
 
-/**
- * Generated class for the DestailsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -39,7 +33,6 @@ export class DetailsPage {
     
     this.detailsObject = this.firebaseService.get(this.gender+ '/sports/'+this.sport.path+"/"+this.category+"/schedule"+"/"+this.index);
     this.detailsObject.subscribe((data) => {
-      console.log("details",data)
       if(data ){
         this.details = data[0];
         this.calenderTitle = (this.gender=='male'?'Men':'Women')+"'s "+this.sport.name+" : " +this.categoryDetails.title;
