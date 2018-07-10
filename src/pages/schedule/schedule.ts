@@ -18,11 +18,14 @@ export class SchedulePage {
   sport: any;
   gender: any;
   scheduleData: any;
+  scheduleFullData:any;
   scheduleObject: any;
   showBreadCrumb: any;
   calenderTitle: any = "";
 
   objectKeys = Object.keys;
+  search: String = "";
+  searcRegEx: any = new RegExp("");
   
   constructor(public navCtrl: NavController, public navParams: NavParams, private firebaseService: FirebaseService, private calendar: Calendar) {
     this.sport = navParams.get('sportItem');
@@ -32,20 +35,76 @@ export class SchedulePage {
     
     this.scheduleObject = this.firebaseService.get(this.gender+ '/sports/'+this.sport.path+"/"+this.category+"/schedule");
     
-    this.scheduleObject.subscribe((data) => {
-      console.log(data);
+    this.scheduleObject.subscribe((data: any[]) => {
       if(data){
-        this.scheduleData = data;
-        this.calenderTitle = (this.gender=='male'?'Men':'Women')+"'s "+this.sport.name+" : " +this.categoryDetails.title;
+        this.scheduleFullData = data.sort(this.sortSchedule);
+        this.dataUpdateOnView();
       } else {
         this.scheduleData = [];
       }
     }, (error) => {
       this.scheduleData = [];
     })
-    
+  }
 
+  sortSchedule(a,b){
+    if(new Date(a.details.date).valueOf() == new Date(b.details.date).valueOf()) {
+      if(a.details.time.toUpperCase().toString().includes("AM") && b.details.time.toUpperCase().toString().includes("PM")){
+        return -1;
+      } else if(a.details.time.toUpperCase().toString().includes("PM") && b.details.time.toUpperCase().toString().includes("AM")){
+        return 1;
+      } else if(a.details.time.toUpperCase().toString() != "" && b.details.time.toUpperCase().toString() != ""){
+        if(a.details.time.toUpperCase().toString() < b.details.time.toUpperCase().toString()){
+          return -1;
+        } else if(a.details.time.toUpperCase().toString() > b.details.time.toUpperCase().toString()){
+          return 1;
+        }
+      } else if(a.details.time.toUpperCase().toString() == ""){
+        return 1
+      } else if(b.details.time.toUpperCase().toString() == ""){
+        return -1;
+      }
+      return 1;
+    } else if(new Date(a.details.date).valueOf() < new Date(b.details.date).valueOf()) {
+      return -1;
+    } else if(new Date(a.details.date).valueOf() > new Date(b.details.date).valueOf()) {
+      return 1;
+    }
+    return 1;
+  }
 
+  filter(){
+    /*
+    var a = this.search.toUpperCase().toString().split(";");
+    var temp = "";
+    if(a.length > 0){
+      temp += "(^"+a[0]+")";
+      for(var i = 1; i < a.length; ++i){
+        if(a[i] != null && a[i] != undefined && a[i] != ""){
+          temp += "|(^"+a[i]+")";
+        }
+      }
+    }*/
+    this.searcRegEx = new RegExp("(^"+this.search.toUpperCase().toString()+")");
+    this.dataUpdateOnView();
+  }
+
+  dataUpdateOnView(){
+    this.scheduleData = [];
+    if(this.search != null && this.search != undefined && this.search != ""){
+      this.scheduleFullData.forEach(element => {
+        if(element.details && element.details.scores){
+          for(var i = 0; i < element.details.scores.length; ++i){
+            if(element.details.scores[i].team.toUpperCase().toString().match(this.searcRegEx)){
+              this.scheduleData.push(element);
+              break;
+            }
+          }
+        }
+      });
+    } else{
+      this.scheduleData = this.scheduleFullData;
+    }
   }
 
   details(event, i ){

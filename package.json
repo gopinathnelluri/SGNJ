@@ -1,6 +1,6 @@
 {
   "name": "sikh-games-of-nj",
-  "version": "1.0.609",
+  "version": "1.0.611",
   "author": "Gopinath Nelluri",
   "homepage": "http://sikhgamesofnj.com/",
   "private": true,
@@ -23,6 +23,7 @@
     "@angular/platform-browser-dynamic": "5.2.11",
     "@ionic-native/calendar": "^4.9.0",
     "@ionic-native/core": "4.8.0",
+    "@ionic-native/firebase": "^4.9.1",
     "@ionic-native/launch-navigator": "^4.9.0",
     "@ionic-native/splash-screen": "4.8.0",
     "@ionic-native/status-bar": "^4.8.0",

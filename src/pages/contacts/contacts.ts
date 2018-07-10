@@ -20,6 +20,7 @@ export class ContactsPage {
     this.customIcons = icons;
     this.contactObservable = this.firebaseService.get('contacts');
     this.contactObservable.subscribe((data)=>{
+      console.log(data);
       if(data != undefined && data.length >= 1){
         if(data.length == 1){
           if(data[0].$key == "male"){
@@ -42,6 +43,9 @@ export class ContactsPage {
             this.female = data[1];
           }
         } 
+        console.log("male",this.male);
+        console.log("female",this.female);
+        
       } else {
         this.male = [];
         this.female = [];

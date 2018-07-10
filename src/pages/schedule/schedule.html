@@ -12,6 +12,9 @@
       {{gender=='male'?'Men':'Women'}} > {{sport.name}} > {{categoryDetails.title}}
   </div>
   -->
+  <ion-item>
+    <ion-input type="text" placeholder="Search Team:" [(ngModel)]="search" (ngModelChange)="filter()" name="search"></ion-input>
+  </ion-item>
     <div *ngIf="scheduleData">
         <div>
             <ion-card no-padding>

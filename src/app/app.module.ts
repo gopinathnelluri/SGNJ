@@ -23,6 +23,7 @@ import { DetailsPageModule } from '../pages/details/details.module';
 import { InfoPage } from '../pages/info/info';
 import { InfoPageModule } from '../pages/info/info.module';
 
+
 @NgModule({
   declarations: [
     MyApp

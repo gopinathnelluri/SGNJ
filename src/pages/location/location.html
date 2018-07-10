@@ -71,7 +71,7 @@
               Lyft
         </button> 
       </div>
-      <button ion-item (click)="openInBrowser()">
+      <button *ngIf="!apps" ion-item (click)="openInBrowser()">
               <div class="icon-avatar-border-radius" item-start>
                   <img class="icon-image-bg" src="{{customIcons.browser}}">
               </div>
