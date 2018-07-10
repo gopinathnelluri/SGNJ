@@ -7,7 +7,7 @@
 
 
 <ion-content class="card-background-page">
-  <!--
+    <!--
   <div class="breadcrumb" *ngIf="showBreadCrumb">
       {{gender=='male'?'Men':'Women'}} > {{sport.name}} > {{categoryDetails.title}}
   </div>
@@ -25,9 +25,40 @@
                             No games scheduled!
                         </div>
                         <ion-card (click)="details($event, scheduleItem.$key)" *ngFor="let scheduleItem of scheduleData;let i = index">
-                            <ion-list no-border>
+                            <ion-list *ngIf="scheduleItem.details" no-border>
+                                <ion-item class="teams">
+                                    <ion-grid>
+                                        <ion-row *ngIf="sport.teamSport == true && (!scheduleItem.details.scores || scheduleItem.details.scores.length < 2)">
+                                            <ion-col class="team" col-5 text-center>
+                                                --
+                                            </ion-col>
+                                            <ion-col class="vs" col-2 text-center>
+                                                vs
+                                            </ion-col>
+                                            <ion-col class="team" col-5 text-center>
+                                                --
+                                            </ion-col>
+                                        </ion-row>
+                                        <ion-row *ngIf="sport.teamSport == true &&  (scheduleItem.details.scores && scheduleItem.details.scores.length == 2)" align-items-center>
+                                            <ion-col class="team" col-5 text-center>
+                                                {{scheduleItem.details.scores[0].team}}
+                                            </ion-col>
+                                            <ion-col class="vs" col-2 text-center>
+                                                vs
+                                            </ion-col>
+                                            <ion-col class="team" col-5 text-center>
+                                                {{scheduleItem.details.scores[1].team}}
+                                            </ion-col>
+                                        </ion-row>
+                                        <ion-row *ngIf="sport.teamSport != true || (scheduleItem.details.scores && scheduleItem.details.scores.length > 2)">
+                                            <ion-col class="details" text-center>
+                                                See Details
+                                            </ion-col>
+                                        </ion-row>
+                                    </ion-grid>
+                                </ion-item>
                                 <ion-item>
-                                    <ion-grid *ngIf="scheduleItem.details" class="scheduleDetails">
+                                    <ion-grid class="scheduleDetails">
                                         <ion-row>
                                             <ion-col no-padding text-left>
                                                 <ion-row>

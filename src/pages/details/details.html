@@ -99,17 +99,17 @@
                 </ion-item>
             </ion-list>
 
-            <ion-list no-border>
+            <ion-list>
                 <ion-item (click)="dateClicked($event,i)">
                     <ion-icon name="time" item-start large></ion-icon>
-                    <h3>{{details.date | date:'fullDate'}}</h3>
+                    <p>{{details.date | date:'fullDate'}}</p>
                     <p>{{details.time}}</p>
                 </ion-item>
             </ion-list>
-            <ion-list *ngIf="details.location.address" no-border>
+            <ion-list *ngIf="details.location.address">
                 <ion-item (click)="addressClicked($event,i)">
                     <ion-icon name="navigate" item-left large></ion-icon>
-                    <h3>{{details.location.address}}</h3>
+                    <p>{{details.location.address}}</p>
                     <p>{{details.location.city}}, {{details.location.state}} {{details.location.zip}}</p>
                 </ion-item>
             </ion-list>

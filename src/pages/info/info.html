@@ -25,7 +25,7 @@
       <ion-item>
         Version
         <ion-note item-end>
-          1.0.5
+          1.0.609
         </ion-note>
       </ion-item>
     </ion-list>
@@ -39,13 +39,13 @@
             </ion-avatar>
             {{info.company}}
         </ion-item>
-        <ion-item *ngIf="info.phone">
+        <ion-item *ngIf="info.phone" (click)="callThisNumber(info.phone)">
             <ion-icon name="call" item-start></ion-icon>
-            <a href="tel:{{info.phone}}">{{info.phone}}</a>
+            {{info.phone}}
         </ion-item>
-        <ion-item *ngIf="info.email">
+        <ion-item *ngIf="info.email" (click)="sendEmail(info.email)">
             <ion-icon name="mail" item-start></ion-icon>
-            <a href="mailto:{{info.email}}">{{info.email}}</a>
+            {{info.email}}
         </ion-item>
       </ion-list>
       <p>{{info.footer}}</p>

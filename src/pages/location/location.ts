@@ -53,7 +53,7 @@ export class LocationPage {
     .then(
       success => console.log('Launched navigator'),
       error => console.log('Error launching navigator', error)
-    );
+    ).catch((e) => {});
   }
 
   openInAppleMaps(){
@@ -65,7 +65,7 @@ export class LocationPage {
     .then(
       success => console.log('Launched navigator'),
       error => console.log('Error launching navigator', error)
-    );
+    ).catch((e) => {});
   }
 
   openInUber(){
@@ -77,7 +77,7 @@ export class LocationPage {
     .then(
       success => console.log('Launched navigator'),
       error => console.log('Error launching navigator', error)
-    );
+    ).catch((e) => {});
   }
 
   openInLyft(){

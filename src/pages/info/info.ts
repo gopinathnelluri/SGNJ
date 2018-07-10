@@ -18,11 +18,23 @@ export class InfoPage {
     this.infoObservable = this.firebaseService.get('info');
     this.infoObservable.subscribe((data)=>{
         this.info = data[0];
+    }, (error) => {
+  
     })
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad InfoPage');
+  }
+
+  callThisNumber(number){
+      var url = "tel:"+number;
+      window.open(url,'_system', 'location=yes');
+  }
+  
+  sendEmail(email){
+    var url = "mailto:"+email;
+      window.open(url,'_system', 'location=yes');
   }
 
 }

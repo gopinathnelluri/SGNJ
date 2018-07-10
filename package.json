@@ -1,6 +1,6 @@
 {
-  "name": "SikhGamesOfNJ",
-  "version": "1.0.5",
+  "name": "sikh-games-of-nj",
+  "version": "1.0.609",
   "author": "Gopinath Nelluri",
   "homepage": "http://sikhgamesofnj.com/",
   "private": true,
@@ -66,13 +66,13 @@
         "LOCATION_USAGE_DESCRIPTION": "This app requires access to your location for navigation purposes"
       },
       "cordova-plugin-calendar": {
-        "CALENDAR_USAGE_DESCRIPTION": " "
+        "CALENDAR_USAGE_DESCRIPTION": "This app requires access to your calendar to add events"
       },
       "cordova-plugin-statusbar": {}
     },
     "platforms": [
-      "android",
-      "ios"
+      "ios",
+      "android"
     ]
   }
 }

@@ -40,8 +40,10 @@ export class HomePage {
           this.maleSportsList.forEach((item) =>{
               this.maleListOptionsDisplay.push(false);
           })
-    
-       })
+       }, (error) => {
+          this.maleSportsList = [];
+          this.maleListOptionsDisplay = [];
+      })
        
 
        this.femaleSportsListObservable = this.firebaseService.get('female/list');
@@ -51,7 +53,10 @@ export class HomePage {
           this.femaleSportsList.forEach((item) =>{
               this.femaleListOptionsDisplay.push(false);
           })
-       })
+       }, (error) => {
+        this.femaleSportsList = [];
+        this.femaleListOptionsDisplay = [];
+    })
        
   }
 

@@ -37,6 +37,8 @@ export class DetailsPage {
         this.details = data[0];
         this.calenderTitle = (this.gender=='male'?'Men':'Women')+"'s "+this.sport.name+" : " +this.categoryDetails.title;
       }
+    }, (error) => {
+      this.details = undefined;
     })
     
   }
@@ -54,7 +56,7 @@ export class DetailsPage {
               }
           })
         }
-      })
+      }).catch((e)=>{})
     }
   }
 

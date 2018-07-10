@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { icons } from '../../providers/icons';
 import { FirebaseService } from "../../providers/firebase-service";
 
@@ -16,7 +16,7 @@ export class ContactsPage {
   male: any;
   female: any;
 
-  constructor(public plt: Platform, public navCtrl: NavController, public navParams: NavParams, public firebaseService: FirebaseService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public firebaseService: FirebaseService) {
     this.customIcons = icons;
     this.contactObservable = this.firebaseService.get('contacts');
     this.contactObservable.subscribe((data)=>{
@@ -46,8 +46,15 @@ export class ContactsPage {
         this.male = [];
         this.female = [];
       }
-    })
-       
+    }, (error) => {
+      this.male = [];
+      this.female = [];
+    })    
+  }
+
+  callThisNumber(number){
+      var url = "tel:"+number;
+      window.open(url,'_system', 'location=yes');
   }
 
   ionViewDidLoad() {

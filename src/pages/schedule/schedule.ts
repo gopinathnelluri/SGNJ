@@ -33,10 +33,15 @@ export class SchedulePage {
     this.scheduleObject = this.firebaseService.get(this.gender+ '/sports/'+this.sport.path+"/"+this.category+"/schedule");
     
     this.scheduleObject.subscribe((data) => {
+      console.log(data);
       if(data){
         this.scheduleData = data;
         this.calenderTitle = (this.gender=='male'?'Men':'Women')+"'s "+this.sport.name+" : " +this.categoryDetails.title;
+      } else {
+        this.scheduleData = [];
       }
+    }, (error) => {
+      this.scheduleData = [];
     })
     
 
@@ -69,6 +74,8 @@ export class SchedulePage {
             }
         })
       }
+    }).catch((e)=> {
+      
     })
   }
 
