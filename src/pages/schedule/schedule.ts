@@ -54,7 +54,44 @@ export class SchedulePage {
       } else if(a.details.time.toUpperCase().toString().includes("PM") && b.details.time.toUpperCase().toString().includes("AM")){
         return 1;
       } else if(a.details.time.toUpperCase().toString() != "" && b.details.time.toUpperCase().toString() != ""){
-        if(a.details.time.toUpperCase().toString() < b.details.time.toUpperCase().toString()){
+        /* 12 PM Check Start*/
+        if(a.details.time.toUpperCase().toString().includes("PM")
+            && b.details.time.toUpperCase().toString().includes("PM")
+            && ((a.details.time.toUpperCase().toString() >= "12:00 PM" && a.details.time.toUpperCase().toString() <= "12:59 PM")
+            || (b.details.time.toUpperCase().toString() >= "12:00 PM" && b.details.time.toUpperCase().toString() <= "12:59 PM"))){
+            
+              if((a.details.time.toUpperCase().toString() >= "12:00 PM" && a.details.time.toUpperCase().toString() <= "12:59 PM")
+                && (b.details.time.toUpperCase().toString() >= "12:00 PM" && b.details.time.toUpperCase().toString() <= "12:59 PM")){
+                if(a.details.time.toUpperCase().toString() < b.details.time.toUpperCase().toString()){
+                  return -1;
+                } else if(a.details.time.toUpperCase().toString() > b.details.time.toUpperCase().toString()){
+                  return 1;
+                }
+              } else if((a.details.time.toUpperCase().toString() >= "12:00 PM" && a.details.time.toUpperCase().toString() <= "12:59 PM")){
+                return -1;
+              } else {
+                return 1;
+              }
+        } /* 12 PM Check End*/
+        else if(a.details.time.toUpperCase().toString().includes("AM") /* 12 AM Check Start*/
+        && b.details.time.toUpperCase().toString().includes("AM")
+        && ((a.details.time.toUpperCase().toString() >= "12:00 AM" && a.details.time.toUpperCase().toString() <= "12:59 AM")
+        || (b.details.time.toUpperCase().toString() >= "12:00 AM" && b.details.time.toUpperCase().toString() <= "12:59 AM"))){
+        
+          if((a.details.time.toUpperCase().toString() >= "12:00 AM" && a.details.time.toUpperCase().toString() <= "12:59 AM")
+            && (b.details.time.toUpperCase().toString() >= "12:00 AM" && b.details.time.toUpperCase().toString() <= "12:59 AM")){
+            if(a.details.time.toUpperCase().toString() < b.details.time.toUpperCase().toString()){
+              return -1;
+            } else if(a.details.time.toUpperCase().toString() > b.details.time.toUpperCase().toString()){
+              return 1;
+            }
+          } else if((a.details.time.toUpperCase().toString() >= "12:00 AM" && a.details.time.toUpperCase().toString() <= "12:59 AM")){
+            return -1;
+          } else {
+            return 1;
+          }
+        }/* 12 AM Check end*/
+        else if(a.details.time.toUpperCase().toString() < b.details.time.toUpperCase().toString()){
           return -1;
         } else if(a.details.time.toUpperCase().toString() > b.details.time.toUpperCase().toString()){
           return 1;

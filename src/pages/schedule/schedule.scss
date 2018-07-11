@@ -50,7 +50,7 @@
 }
 
 .scheduleDetails{
-    font-size: 1.2rem;
+    font-size: 0.7em;
     /*color:  #9E9E9E;*/
     font-weight: bold;
 }
@@ -60,16 +60,22 @@
     /*color:  #9E9E9E;*/
     font-weight: bold;
     font-style: italic;
+    position:relative;
+    top:-1px;
+    padding: 3px;
+    background:white;
+    color:slateblue;
+    border-radius: 5px;
 }
 
 .na{
-    font-size: 0.8em;
+    font-size: 0.7em;
     font-weight: bold;
     font-style: italic;
 }
 
 .team{
-    font-size: 0.8em;
+    font-size: 0.7em;
     /*color:  #9E9E9E;*/
     font-weight: bold;
 }
@@ -80,7 +86,7 @@
 }
 
 .details{
-    font-size: 0.8em;
+    font-size: 0.7em;
     font-weight: bold;
     font-style: italic;
 }
