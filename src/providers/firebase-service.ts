@@ -12,4 +12,8 @@ export class FirebaseService {
     return this.afd.list(listName);
   }
 
+  getObject(objName){
+    return this.afd.object(objName);
+  }
+
 }

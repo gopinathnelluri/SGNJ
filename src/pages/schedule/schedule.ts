@@ -110,6 +110,10 @@ export class SchedulePage {
     return 1;
   }
 
+  onCancelFilter(){
+    this.search = "";
+    this.filter();
+  }
   filter(){
     /*
     var a = this.search.toUpperCase().toString().split(";");

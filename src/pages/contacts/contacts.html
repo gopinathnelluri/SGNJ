@@ -8,12 +8,6 @@
   <ion-navbar>
     <ion-title>Contacts</ion-title>
   </ion-navbar>
-</ion-header>
-
-
-<ion-content class="page" padding>
-
-  <div>
     <ion-segment [(ngModel)]="segment">
       <ion-segment-button value="male">
         <ion-icon name="man"></ion-icon> MALE
@@ -22,13 +16,20 @@
         <ion-icon name="woman"></ion-icon> FEMALE
       </ion-segment-button>
     </ion-segment>
+</ion-header>
+
+
+<ion-content class="page" padding>
+
+  <div>
+    
   </div>
 
   <div [ngSwitch]="segment">
     <div *ngSwitchCase="'male'">
       <div *ngIf="!male">
         <ion-card padding text-center>
-          <h2>Loading..!</h2>
+          <h2>Loading..</h2>
         </ion-card>
       </div>
       <div *ngIf="(male && male.length == 0)">
@@ -89,7 +90,7 @@
     <div *ngSwitchCase="'female'">
       <div *ngIf="!female">
         <ion-card padding text-center>
-          <h2>Loading..!</h2>
+          <h2>Loading..</h2>
         </ion-card>
       </div>
       <div *ngIf="(female && female.length == 0)">

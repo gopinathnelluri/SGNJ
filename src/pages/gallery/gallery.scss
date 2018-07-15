@@ -1,0 +1,45 @@
+page-gallery {
+    .image-container{
+        background-size: cover;
+        min-height: 200px;
+    }
+
+    @media (min-width: 0px){
+        .images {
+            column-count: 2;
+        }
+    }
+
+    @media (min-width: 620px){
+        .images {
+            column-count: 4;
+        }
+    }
+
+    @media (min-width: 820px){
+        .images {
+            column-count: 6;
+        }
+    }
+
+    .images{
+        column-gap: 2px;
+
+    }
+
+    .one-image {
+        float:left;
+    }
+    .close-icon{
+        font-size: 2em;
+        margin: 5px;
+        position: absolute;
+        right: 0px;
+        top: 2px;
+        z-index: 10;
+        color: wheat;
+    }
+    .hide{
+        display:none;
+    }
+}

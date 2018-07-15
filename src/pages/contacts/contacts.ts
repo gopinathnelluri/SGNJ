@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
 import { icons } from '../../providers/icons';
 import { FirebaseService } from "../../providers/firebase-service";
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 @IonicPage()
 @Component({
@@ -15,12 +16,24 @@ export class ContactsPage {
   segment: string = "male";
   male: any;
   female: any;
+  isIOS: boolean = true;
+  emailURLPrefix: string = "mailto:";
+  phoneURLPrefix: string = "tel:";
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public firebaseService: FirebaseService) {
+  constructor(private iab: InAppBrowser, private platform: Platform, public navCtrl: NavController, public navParams: NavParams, public firebaseService: FirebaseService) {
     this.customIcons = icons;
+    this.firebaseService.getObject("app/general/prefix").subscribe((data) => {
+      if(data){
+        if(data.emailURLPrefix){
+          this.emailURLPrefix = data.emailURLPrefix;
+        }
+        if(data.phoneURLPrefix){
+          this.phoneURLPrefix = data.phoneURLPrefix;
+        }
+      }
+    })
     this.contactObservable = this.firebaseService.get('contacts');
     this.contactObservable.subscribe((data)=>{
-      console.log(data);
       if(data != undefined && data.length >= 1){
         if(data.length == 1){
           if(data[0].$key == "male"){
@@ -43,8 +56,6 @@ export class ContactsPage {
             this.female = data[1];
           }
         } 
-        console.log("male",this.male);
-        console.log("female",this.female);
         
       } else {
         this.male = [];
@@ -57,8 +68,17 @@ export class ContactsPage {
   }
 
   callThisNumber(number){
-      var url = "tel:"+number;
-      window.open(url,'_system', 'location=yes');
+      var url = this.phoneURLPrefix+number;
+      url = url.replace(/([ ()-])+/g,"");
+      try{
+        if(this.platform.is("cordova") && this.platform.is("ios")){
+          this.iab.create(url,'_system').show();
+        } else {
+          window.open(url, '_system');
+        }  
+      }catch(e){
+        console.log(e);
+      }
   }
 
   ionViewDidLoad() {

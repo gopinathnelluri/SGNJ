@@ -7,22 +7,22 @@
 </ion-header>
 
 <ion-content>
-  <div padding>
-    <ion-segment [(ngModel)]="segment">
-      <ion-segment-button value="men">
-        <ion-icon name="man"></ion-icon> MALE
-      </ion-segment-button>
-      <ion-segment-button value="women">
-        <ion-icon name="woman"></ion-icon> FEMALE
-      </ion-segment-button>
-    </ion-segment>
-  </div>
+    <div padding>
+        <ion-segment [(ngModel)]="segment">
+          <ion-segment-button value="men">
+            <ion-icon name="man"></ion-icon> MALE
+          </ion-segment-button>
+          <ion-segment-button value="women">
+            <ion-icon name="woman"></ion-icon> FEMALE
+          </ion-segment-button>
+        </ion-segment>
+      </div>
 
   <div [ngSwitch]="segment">
     <div *ngSwitchCase="'men'">
       <div *ngIf="!maleSportsList">
         <ion-card padding text-center>
-          <h2>Loading..!</h2>
+          <h2>Loading..</h2>
         </ion-card>
       </div>
       <div *ngIf="(maleSportsList && maleSportsList.length == 0)">
@@ -50,7 +50,6 @@
               </div>
             </ion-list>
           </div>
-
         </ion-card-content>
       </ion-card>
     </div>
@@ -59,7 +58,7 @@
     <div *ngSwitchCase="'women'">
       <div *ngIf="!femaleSportsList">
         <ion-card padding text-center>
-          <h2>Loading..!</h2>
+          <h2>Loading..</h2>
         </ion-card>
       </div>
       <div *ngIf="(femaleSportsList && femaleSportsList.length == 0)">

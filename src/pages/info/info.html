@@ -14,8 +14,11 @@
 
 
 <ion-content class="info-page" padding>
-  <div padding-top text-center>
-    <img class="slide-image" src="{{appIcons['logo']}}">
+  <div (click)="authenticate()" padding-top text-center>
+    <img class="slide-image" src="{{appIcons['logo']}}"> 
+  </div>
+  <div text-center>
+      <button (click)="logOut()" ion-button *ngIf="logedIn" outline>Log Out</button>
   </div>
   <div>
     <ion-list>
@@ -25,9 +28,15 @@
       <ion-item>
         Version
         <ion-note item-end>
-          1.0.612
+          {{myAppVersion}}
         </ion-note>
       </ion-item>
+      <ion-item  *ngIf="info && info.docs">
+          Docs
+          <ion-note (click)="openWebSite(info.docs)" item-end>
+            {{info.docs}}
+          </ion-note>
+        </ion-item>
     </ion-list>
   </div>
   <div>
@@ -46,6 +55,10 @@
         <ion-item *ngIf="info.email" (click)="sendEmail(info.email)">
             <ion-icon name="mail" item-start></ion-icon>
             {{info.email}}
+        </ion-item>
+        <ion-item *ngIf="info.website" (click)="openWebSite(info.website)">
+            <ion-icon name="globe" item-start></ion-icon>
+            {{info.website}}
         </ion-item>
       </ion-list>
       <p>{{info.footer}}</p>

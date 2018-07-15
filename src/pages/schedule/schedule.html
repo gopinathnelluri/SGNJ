@@ -1,15 +1,23 @@
 <ion-header>
-
     <ion-navbar>
         <ion-title>{{sport.name}}</ion-title>
     </ion-navbar>
+    <ion-searchbar
+        placeholder="Search Team"
+        [(ngModel)]="search"
+        showCancelButton="true"
+        (ionInput)="filter()"
+        (ionCancel)="onCancelFilter($event)">
+    </ion-searchbar>
 </ion-header>
 
 
 <ion-content class="card-background-page">
+  <!--
   <ion-item>
     <ion-input type="text" placeholder="Search Team:" [(ngModel)]="search" (ngModelChange)="filter()" name="search"></ion-input>
   </ion-item>
+  -->
     <div *ngIf="scheduleData">
         <div>
             <ion-card no-padding>

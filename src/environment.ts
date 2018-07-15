@@ -7,8 +7,8 @@ export const firebaseConfig = {
     storageBucket: "sgofnj.appspot.com",
     messagingSenderId: "1011412602625"
 };
-*/
 
+*/
 
 
 export const firebaseConfig = {
