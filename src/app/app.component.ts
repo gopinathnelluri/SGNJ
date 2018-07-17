@@ -32,7 +32,7 @@ export class MyApp {
       this.generalToast();
 
       if(this.platform.is("cordova")){
-        /*
+        
         this.fcm.getToken().then(token => {
           // Your best bet is to here store the token on the user's profile on the
           // Firebase database, so that when you want to send notifications to this 
@@ -48,7 +48,7 @@ export class MyApp {
             //Notification was received in foreground. Maybe the user needs to be notified.
           }
         });
-        */
+        
 
       }
       

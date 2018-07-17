@@ -4,20 +4,19 @@
       Sikh Games of NJ
     </ion-title>
   </ion-navbar>
+  <div padding>
+      <ion-segment [(ngModel)]="segment">
+        <ion-segment-button value="men">
+          <ion-icon name="man"></ion-icon> MALE
+        </ion-segment-button>
+        <ion-segment-button value="women">
+          <ion-icon name="woman"></ion-icon> FEMALE
+        </ion-segment-button>
+      </ion-segment>
+    </div>
 </ion-header>
 
 <ion-content>
-    <div padding>
-        <ion-segment [(ngModel)]="segment">
-          <ion-segment-button value="men">
-            <ion-icon name="man"></ion-icon> MALE
-          </ion-segment-button>
-          <ion-segment-button value="women">
-            <ion-icon name="woman"></ion-icon> FEMALE
-          </ion-segment-button>
-        </ion-segment>
-      </div>
-
   <div [ngSwitch]="segment">
     <div *ngSwitchCase="'men'">
       <div *ngIf="!maleSportsList">
