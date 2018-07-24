@@ -1,4 +1,4 @@
-/*
+
 export const firebaseConfig = {
     apiKey: "AIzaSyCs2gqqKNJRaGMK_X6N7opHdhwnPDL5nZ8",
     authDomain: "sgofnj.firebaseapp.com",
@@ -8,8 +8,8 @@ export const firebaseConfig = {
     messagingSenderId: "1011412602625"
 };
 
-*/
 
+/*
 
 export const firebaseConfig = {
     apiKey: "AIzaSyC1KHF2G4dBKQ7QVZNeQKrpJCsbZrjGjjQ",
@@ -19,3 +19,5 @@ export const firebaseConfig = {
     storageBucket: "tournament-7e7ce.appspot.com",
     messagingSenderId: "71672070481"
 }
+
+*/

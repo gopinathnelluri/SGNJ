@@ -2,18 +2,13 @@
     <ion-navbar>
         <ion-title>{{sport.name}}</ion-title>
     </ion-navbar>
-    <ion-searchbar
-        placeholder="Search Team"
-        [(ngModel)]="search"
-        showCancelButton="true"
-        (ionInput)="filter()"
-        (ionCancel)="onCancelFilter($event)">
+    <ion-searchbar placeholder="Search Team" [(ngModel)]="search" showCancelButton="true" (ionInput)="filter()" (ionCancel)="onCancelFilter($event)">
     </ion-searchbar>
 </ion-header>
 
 
 <ion-content class="card-background-page">
-  <!--
+    <!--
   <ion-item>
     <ion-input type="text" placeholder="Search Team:" [(ngModel)]="search" (ngModelChange)="filter()" name="search"></ion-input>
   </ion-item>
@@ -27,74 +22,80 @@
 
                 <ion-list>
                     <ion-item>
-                        <div text-center *ngIf="!scheduleData || (scheduleData && scheduleData.length == 0)">
+                        <div *ngIf="!scheduleData">
+                            <mini-loader></mini-loader>
+                        </div>
+                        <div text-center *ngIf="(scheduleData && scheduleData.length == 0)">
                             No games scheduled!
                         </div>
-                        <ion-card (click)="details($event, scheduleItem.$key)" *ngFor="let scheduleItem of scheduleData;let i = index">
-                            <ion-list *ngIf="scheduleItem.details" no-border>
-                                <ion-item class="teams">
-                                    <ion-grid>
-                                        <ion-row *ngIf="sport.teamSport == true && (!scheduleItem.details.scores || scheduleItem.details.scores.length < 2)">
-                                            <ion-col class="team" col-5 text-center>
-                                                --
-                                            </ion-col>
-                                            <ion-col class="vs" col-2 text-center>
-                                                vs
-                                            </ion-col>
-                                            <ion-col class="team" col-5 text-center>
-                                                --
-                                            </ion-col>
-                                        </ion-row>
-                                        <ion-row *ngIf="sport.teamSport == true &&  (scheduleItem.details.scores && scheduleItem.details.scores.length == 2)" align-items-center>
-                                            <ion-col class="team" col-5 text-center>
-                                                {{scheduleItem.details.scores[0].team}}
-                                            </ion-col>
-                                            <ion-col class="vs" col-2 text-center>
-                                                vs
-                                            </ion-col>
-                                            <ion-col class="team" col-5 text-center>
-                                                {{scheduleItem.details.scores[1].team}}
-                                            </ion-col>
-                                        </ion-row>
-                                        <ion-row *ngIf="sport.teamSport != true || (scheduleItem.details.scores && scheduleItem.details.scores.length > 2)">
-                                            <ion-col class="details" text-center>
-                                                See Details
-                                            </ion-col>
-                                        </ion-row>
-                                    </ion-grid>
-                                </ion-item>
-                                <ion-item>
-                                    <ion-grid class="scheduleDetails">
-                                        <ion-row>
-                                            <ion-col no-padding text-left>
-                                                <ion-row>
-                                                    <ion-col>
-                                                        {{scheduleItem.details.level}}
-                                                    </ion-col>
-                                                </ion-row>
-                                                <ion-row>
-                                                    <ion-col>
-                                                        {{scheduleItem.details.status}}
-                                                    </ion-col>
-                                                </ion-row>
-                                            </ion-col>
-                                            <ion-col no-padding text-right>
-                                                <ion-row *ngIf="scheduleItem.details.date">
-                                                    <ion-col>
-                                                        {{scheduleItem.details.date | date:'MM/dd/yyyy'}}
-                                                    </ion-col>
-                                                </ion-row>
-                                                <ion-row>
-                                                    <ion-col>
-                                                        {{scheduleItem.details.time}}
-                                                    </ion-col>
-                                                </ion-row>
-                                            </ion-col>
-                                        </ion-row>
-                                    </ion-grid>
-                                </ion-item>
-                            </ion-list>
-                        </ion-card>
+                        <div *ngIf="(scheduleData && scheduleData.length > 0)">
+                            <ion-card (click)="details($event, scheduleItem.$key)" *ngFor="let scheduleItem of scheduleData;let i = index">
+                                <ion-list *ngIf="scheduleItem.details" no-border>
+                                    <ion-item class="teams">
+                                        <ion-grid>
+                                            <ion-row *ngIf="sport.teamSport == true && (!scheduleItem.details.scores || scheduleItem.details.scores.length < 2)">
+                                                <ion-col class="team" col-5 text-center>
+                                                    --
+                                                </ion-col>
+                                                <ion-col class="vs" col-2 text-center>
+                                                    vs
+                                                </ion-col>
+                                                <ion-col class="team" col-5 text-center>
+                                                    --
+                                                </ion-col>
+                                            </ion-row>
+                                            <ion-row *ngIf="sport.teamSport == true &&  (scheduleItem.details.scores && scheduleItem.details.scores.length == 2)" align-items-center>
+                                                <ion-col class="team" col-5 text-center>
+                                                    {{scheduleItem.details.scores[0].team}}
+                                                </ion-col>
+                                                <ion-col class="vs" col-2 text-center>
+                                                    vs
+                                                </ion-col>
+                                                <ion-col class="team" col-5 text-center>
+                                                    {{scheduleItem.details.scores[1].team}}
+                                                </ion-col>
+                                            </ion-row>
+                                            <ion-row *ngIf="sport.teamSport != true || (scheduleItem.details.scores && scheduleItem.details.scores.length > 2)">
+                                                <ion-col class="details" text-center>
+                                                    See Details
+                                                </ion-col>
+                                            </ion-row>
+                                        </ion-grid>
+                                    </ion-item>
+                                    <ion-item>
+                                        <ion-grid class="scheduleDetails">
+                                            <ion-row>
+                                                <ion-col no-padding text-left>
+                                                    <ion-row>
+                                                        <ion-col>
+                                                            {{scheduleItem.details.level}}
+                                                        </ion-col>
+                                                    </ion-row>
+                                                    <ion-row>
+                                                        <ion-col>
+                                                            {{scheduleItem.details.status}}
+                                                        </ion-col>
+                                                    </ion-row>
+                                                </ion-col>
+                                                <ion-col no-padding text-right>
+                                                    <ion-row *ngIf="scheduleItem.details.date">
+                                                        <ion-col>
+                                                            {{scheduleItem.details.date | date:'MM/dd/yyyy'}}
+                                                        </ion-col>
+                                                    </ion-row>
+                                                    <ion-row>
+                                                        <ion-col>
+                                                            {{scheduleItem.details.time}}
+                                                        </ion-col>
+                                                    </ion-row>
+                                                </ion-col>
+                                            </ion-row>
+                                        </ion-grid>
+                                    </ion-item>
+                                </ion-list>
+                            </ion-card>
+                        </div>
+
                     </ion-item>
                 </ion-list>
             </ion-card>

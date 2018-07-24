@@ -27,9 +27,7 @@
   <div [ngSwitch]="segment">
     <div *ngSwitchCase="'male'">
       <div *ngIf="!male">
-        <ion-card padding text-center>
-          <h2>Loading..</h2>
-        </ion-card>
+          <mini-loader></mini-loader>
       </div>
       <div *ngIf="(male && male.length == 0)">
         <ion-card padding text-center>
@@ -88,9 +86,7 @@
   <div [ngSwitch]="segment">
     <div *ngSwitchCase="'female'">
       <div *ngIf="!female">
-        <ion-card padding text-center>
-          <h2>Loading..</h2>
-        </ion-card>
+          <mini-loader></mini-loader>
       </div>
       <div *ngIf="(female && female.length == 0)">
         <ion-card padding text-center>

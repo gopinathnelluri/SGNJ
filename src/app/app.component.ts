@@ -16,7 +16,7 @@ import { FCM } from '@ionic-native/fcm';
 export class MyApp {
   @ViewChild('myNav') navCtrl: NavController;
   rootPage:any = TabsPage;
-  myAppVersion: string = "2.0.0";
+  myAppVersion: string = "2.1.0";
   currentReleaseVersion: any;
   timestamp = new Date().valueOf();
 
@@ -34,6 +34,7 @@ export class MyApp {
       if(this.platform.is("cordova")){
         
         this.fcm.getToken().then(token => {
+          console.log("token:",token)
           // Your best bet is to here store the token on the user's profile on the
           // Firebase database, so that when you want to send notifications to this 
           // specific user you can do it from Cloud Functions.
@@ -41,7 +42,7 @@ export class MyApp {
   
   
         this.fcm.onNotification().subscribe( data => {
-          console.log(data);
+          console.log("notification data",data);
           if(data.wasTapped){
             //Notification was received on device tray and tapped by the user.
           }else{

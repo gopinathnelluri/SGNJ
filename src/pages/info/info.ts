@@ -16,7 +16,7 @@ export class InfoPage {
   infoObservable: any;
   info: any;
   appIcons: any = icons;
-  myAppVersion: string = "2.0.0";
+  myAppVersion: string = "2.1.0";
   logedIn: boolean = false;
   enableLogin: boolean = false;
   tapCount: number = 0;

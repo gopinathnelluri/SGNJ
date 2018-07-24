@@ -27,6 +27,9 @@ import { GalleryPage } from '../pages/gallery/gallery';
 import { LoginPageModule } from '../pages/login/login.module';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { FCM } from '@ionic-native/fcm';
+import { ReportsPage } from '../pages/reports/reports';
+import { ReportsPageModule } from '../pages/reports/reports.module';
+import { ComponentsModule } from '../components/components.module';
 
 @NgModule({
   declarations: [
@@ -39,6 +42,7 @@ import { FCM } from '@ionic-native/fcm';
     HomePageModule,
     InfoPageModule,
     SchedulePageModule,
+    ReportsPageModule,
     DetailsPageModule,
     LocationPageModule,
     ContactsPageModule,
@@ -47,7 +51,8 @@ import { FCM } from '@ionic-native/fcm';
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    ComponentsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -55,6 +60,7 @@ import { FCM } from '@ionic-native/fcm';
     HomePage,
     ContactsPage,
     InfoPage,
+    ReportsPage,
     TabsPage,
     GalleryPage
   ],
@@ -66,6 +72,9 @@ import { FCM } from '@ionic-native/fcm';
     InAppBrowser,
     FCM,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
+  ],
+  exports: [
+    
   ]
 })
 export class AppModule {}

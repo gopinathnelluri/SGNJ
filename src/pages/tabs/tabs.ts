@@ -4,6 +4,7 @@ import { HomePage } from "../home/home";
 import { ContactsPage } from "../contacts/contacts";
 import { InfoPage } from '../info/info';
 import { GalleryPage } from '../gallery/gallery';
+import { ReportsPage } from '../reports/reports';
 
 @IonicPage()
 @Component({
@@ -14,8 +15,10 @@ export class TabsPage {
 
   tab1Root = HomePage;
   tab2Root = ContactsPage;
-  tab3Root = InfoPage;
-  tab4Root = GalleryPage;
+  tab3Root = GalleryPage;
+  tab4Root = ReportsPage;
+  tab5Root = InfoPage;
+  
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   

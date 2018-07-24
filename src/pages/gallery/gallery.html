@@ -30,9 +30,7 @@
       </div>
     </div>
     <div *ngIf="imageList == undefined">
-        <ion-card padding text-center>
-          <h2>Loading..</h2>
-        </ion-card>
+        <mini-loader></mini-loader>
       </div>
     <div *ngIf="imageList && imageList.length == 0">
       <ion-card padding text-center>
